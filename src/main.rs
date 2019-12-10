@@ -11,43 +11,33 @@ fn remove_first(s: &str) -> Option<&str> {
 }
 
 fn disemvowel(inputString: &str) -> String {
-    let strlength = inputString.len();
     let mut newString = String::new();
-    let text = "aAeEiIoOuU";
-    let char_vec:Vec<char> = text.chars().collect();
-    let leta = char_vec[0];
-    let letA = char_vec[1];
-    let lete = char_vec[2];
-    let letE = char_vec[3];
-    let leti = char_vec[4];
-    let letI = char_vec[5];
-    let leto = char_vec[6];
-    let letO = char_vec[7];
-    let letu = char_vec[8];
-    let letU = char_vec[9];
-    let mut inputString2 = inputString;
-
-    for i in 0..strlength {
-        if inputString.chars().next().unwrap() == leta ||
-        inputString2.chars().next().unwrap() == letA ||
-        inputString2.chars().next().unwrap() == lete ||
-        inputString2.chars().next().unwrap() == letE ||
-        inputString2.chars().next().unwrap() == leti ||
-        inputString2.chars().next().unwrap() == letI ||
-        inputString2.chars().next().unwrap() == leto ||
-        inputString2.chars().next().unwrap() == letO ||
-        inputString2.chars().next().unwrap() == letu ||
-        inputString2.chars().next().unwrap() == letU  {
-        
+   
+    for c in inputString.chars() {
+        if isVowel(c) {
         }else {
-        newString.push(inputString2.chars().next().unwrap());
+        newString.push(c);
         }
-        remove_first(inputString2);
     }
-    
-return newString;
+    return newString;
 }
 
+fn isVowel(c: char) -> bool {
+    let vowels = "aAeEiIoOuU";
+    let char_vec:Vec<char> = vowels.chars().collect();
+    if c == char_vec[0]  ||
+        c == char_vec[1] ||
+        c == char_vec[2] ||
+        c == char_vec[3] ||
+        c == char_vec[4] ||
+        c == char_vec[5] ||
+        c == char_vec[6] ||
+        c == char_vec[7] ||
+        c == char_vec[8] ||
+        c == char_vec[9] {
+        return true;
+        } else {return false;}
+}
 
 // Everything from here down is Rust test code. You shouldn't need to 
 // change any of this. 
